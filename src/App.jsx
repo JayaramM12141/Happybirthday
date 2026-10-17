@@ -3,23 +3,30 @@ import './App.css'
 import './LoveLetter.css'
 import './BookCanvas.css'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router'
+import { HashRouter } from 'react-router-dom'
 import Layout from './layout/Layout'
+import {
+  createHashRouter,
+  createRoutesFromElements,
+  Route
+} from 'react-router-dom'
 import Home from './pages/Home'
-import LoveLetter from './pages/LoveLetter'
+import LoveLetter from './pages/LoveL
+etter'
 import Test from './pages/Test'
 import OpeningAnimation from './components/OpeningAnimation'
 
 const App = () => {
 
-  const MyRoute = createBrowserRouter(createRoutesFromElements(
-    <Route>
-      <Route path='/' element={<Layout />}>
-        <Route index element={<Home />}></Route>
-        <Route path='love-Letter' element={<LoveLetter />}></Route>
-        <Route path='test' element={<Test />}></Route>
-      </Route>
+const MyRoute = createHashRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Layout />}>
+      <Route index element={<Home />} />
+      <Route path="love-Letter" element={<LoveLetter />} />
+      <Route path="test" element={<Test />} />
     </Route>
-  ))
+  )
+)
 
 
   // ------------------Cake loader 
