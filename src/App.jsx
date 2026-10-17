@@ -11,8 +11,7 @@ import {
   Route
 } from 'react-router-dom'
 import Home from './pages/Home'
-import LoveLetter from './pages/LoveL
-etter'
+import LoveLetter from './pages/LoveLetter'
 import Test from './pages/Test'
 import OpeningAnimation from './components/OpeningAnimation'
 
