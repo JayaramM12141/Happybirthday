@@ -890,9 +890,9 @@ body {
 
     .name {
         position: absolute;
-        padding: 0px 3px;
-        bottom: -6px;
-        border: 3px solid var(--color-black);
+        padding: 100px 3px;
+        bottom: -600px;
+        border: 30px solid var(--color-black);
     }
 
     .name span {
@@ -994,8 +994,3 @@ body {
     }
 }
 
-.small-rajib-letter {
-    opacity: 0;
-    animation: popInAndFloat 1.0s ease-out 16.0s forwards;
-    transform: translateY(310px);
-}
