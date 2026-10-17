@@ -1,21 +1,21 @@
+
 import React, { useEffect, useState } from 'react'
 import './App.css'
 import './LoveLetter.css'
 import './BookCanvas.css'
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router'
-import { HashRouter } from 'react-router-dom'
-import Layout from './layout/Layout'
+
 import {
   createHashRouter,
   createRoutesFromElements,
-  Route
+  Route,
+  RouterProvider
 } from 'react-router-dom'
+
+import Layout from './layout/Layout'
 import Home from './pages/Home'
 import LoveLetter from './pages/LoveLetter'
 import Test from './pages/Test'
 import OpeningAnimation from './components/OpeningAnimation'
-
-const App = () => {
 
 const MyRoute = createHashRouter(
   createRoutesFromElements(
@@ -27,36 +27,32 @@ const MyRoute = createHashRouter(
   )
 )
 
+const App = () => {
+  const [loading, setLoading] = useState(true)
+  const [showContent, setShowContent] = useState(false)
+  const [animateOut, setAnimateOut] = useState(false)
 
-  // ------------------Cake loader 
-  const [loading, setLoading] = useState(true);
-  const [showContent, setShowContent] = useState(false);
-  const [animateOut, setAnimateOut] = useState(false); // New state for animation
-
+  // Cake loader
   useEffect(() => {
     const handlePageLoad = () => {
-      setTimeout(() => setAnimateOut(true), 8400);
-      setTimeout(() => setLoading(false), 9000);
-      setTimeout(() => setShowContent(true), 8600);
-    };
-
-    if (document.readyState === "complete") {
-      handlePageLoad();
-    } else {
-      window.addEventListener("load", handlePageLoad);
+      setTimeout(() => setAnimateOut(true), 8400)
+      setTimeout(() => setLoading(false), 9000)
+      setTimeout(() => setShowContent(true), 8600)
     }
 
-    return () => window.removeEventListener("load", handlePageLoad);
-  }, []);
+    if (document.readyState === 'complete') {
+      handlePageLoad()
+    } else {
+      window.addEventListener('load', handlePageLoad)
+    }
+
+    return () => window.removeEventListener('load', handlePageLoad)
+  }, [])
 
   return (
     <>
-      {
-        loading && <OpeningAnimation animateOut={animateOut}/>
-      }
-      {
-        showContent && <RouterProvider router={MyRoute} />
-      }
+      {loading && <OpeningAnimation animateOut={animateOut} />}
+      {showContent && <RouterProvider router={MyRoute} />}
     </>
   )
 }
